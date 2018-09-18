@@ -1,0 +1,66 @@
+a) Setup Inicial
+01) Crear directorio 
+02) Con el directorio vacio truffle unbox react
+03) Cargar/Instalar Ganache
+04) truffle compile para compilar los contratos de ejemplo
+05) Configura el truffle.js con las networks desde otro proyecto
+06) migrar los contratos con truffle migrate --network ganache --reset
+07) Probar app con npm run start
+    Si da error de big number: Instalar manualmente con npm install --save bignumber.js (github.com/MikeMcl/bignumber.js)
+08) cambiar en el utils/getweb3.js el puerto adonde apunta localmente (poner el de la ganache)
+    const provider = new Web3.providers.HttpProvider(
+          "http://127.0.0.1:8545"
+        );
+09) desactivar el metamask y probar con npm run start
+10) probar activando el metamask y apuntarlo al ganache
+11) Importar un private key del ganache y generar una nueva cuenta
+12) Probar desde esa cuenta
+13) Good to Go
+
+b)Ahora a crear el nuevo contrato
+00) Crear el contrato en la carpeta de contracts y copiar el contendido de SimpeStorage para probar
+00) Configurar las migraciones en la carpeta migrations
+00) Modifciar el archivo 2_deploy_contracts:
+    Original
+    var SimpleStorage = artifacts.require("./SimpleStorage.sol");
+
+    module.exports = function(deployer) {
+        deployer.deploy(SimpleStorage);
+    };
+
+    Con el nuevo contrato
+    var MemoContract = artifacts.require("./MemoContract.sol");
+
+    module.exports = function(deployer) {
+        deployer.deploy(MemoContract);
+    };
+00) borrar el SimpleStorage
+00) crear un contrato temporal
+    pragma solidity ^0.4.24;
+
+    contract MemoContract {
+        string data;
+
+        function set(string _data) public {
+            data = _data;
+        }
+
+         function get() public view returns (string) {
+            return data;
+        }
+    }
+
+00) compilar el contratato , tener cuidado con las mayusculas y minusculas en la extension
+00) modificar la app.js para que lea el nuevo contrato
+
+
+Para deployar a la ropsten
+crear el archivo.env
+instalar localmente truffle-hdwallet-provider con sudo npm install  truffle-hdwallet-provider --save
+instalar localmente  npm install  dotenv --save (para que lea el archivo . env)
+
+en truffle.js
+var HDWalletProvider = require("truffle-hdwallet-provider");
+require('dotenv').config({ path:require('path').join(__dirname,'.env')});
+
+ir a https://faucet.ropsten.be/ , y con la clave pedir plata
