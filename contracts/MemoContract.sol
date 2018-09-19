@@ -114,7 +114,3 @@ contract MemoContract {
 }
     
 }
-
-
-
-

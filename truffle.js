@@ -1,6 +1,6 @@
 
 var HDWalletProvider = require("truffle-hdwallet-provider");
-require('dotenv').config({ path:require('path').join(__dirname,'.env')});
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -21,10 +21,13 @@ module.exports = {
     ropsten: {
       provider: () => new HDWalletProvider(process.env.MNENOMIC, "https://ropsten.infura.io/v3/" + process.env.INFURA_API_KEY),
       network_id: 3,
-      gas: 4700000,
-      gasPrice: 51
-       
-       },
-  }
-
+      gas: 3000000
+        },
+    kovan: {
+      provider: () => new HDWalletProvider(process.env.MNENOMIC, "https://kovan.infura.io/v3/" + process.env.INFURA_API_KEY),
+      network_id: 42,
+      gas: 3000000,
+      gasPrice: 21
+    },
+ }
 };

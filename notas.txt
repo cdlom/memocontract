@@ -64,3 +64,8 @@ var HDWalletProvider = require("truffle-hdwallet-provider");
 require('dotenv').config({ path:require('path').join(__dirname,'.env')});
 
 ir a https://faucet.ropsten.be/ , y con la clave pedir plata
+
+
+en network ropsten no usar gas price
+compiler (current compiler is 0.4.24+commit.e67f0147.Emscripten.clang
+para verificarlo , optimization igual a no
