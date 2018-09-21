@@ -2,6 +2,11 @@ pragma solidity ^0.4.24;
 
 contract MemoContract {
 
+   //evento para avisar que se agrego una jugada
+  event addedJugada (
+      uint jugadanro
+  );  
+
   // contador de jugadas
   uint contadorjugadas = 0;
   
@@ -49,6 +54,9 @@ contract MemoContract {
      direcciones[_direccion] = _estado;
  } 
 
+
+ 
+
   // Agregar una jugada
   function addJugada ( uint _fecha , string _nombre , string _mail , uint _intentos , uint _tiempo ) public {
       
@@ -67,7 +75,14 @@ contract MemoContract {
                 tiempo: _tiempo
                 
             }));
+
+        // Llamar al evento para informar que se agrego la jugada
+        addedJugada( contadorjugadas );
+
         }
+
+
+
     // Devolver todas las jugadas
     function fetchJugadas() constant public returns(uint[], uint[], bytes32[], bytes32[], uint[], uint[]) {
         

@@ -17,9 +17,22 @@ const getWeb3 = () =>
       } else {
         // Fallback to localhost if no web3 injection. We've configured this to
         // use the development console's port by default.
-        const provider = new Web3.providers.HttpProvider(
-          "http://127.0.0.1:8545"
-        );
+        // const provider = new Web3.providers.HttpProvider(
+        //   "http://127.0.0.1:8545"
+        // );
+
+
+        // const provider = new Web3.providers.WebsocketProvider(
+        //   //"ws://127.0.0.1:8545"
+        //   "wss://ropsten.infura.io/ws"
+        // );
+ 
+        // api dels bdaca37a988e4283864a60e0bb1fa2eb
+        //const provider = new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/efa7ae9d17734a61b63957d0773eede8")
+        const provider = new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/bdaca37a988e4283864a60e0bb1fa2eb")
+
+        //var provider = new Web3.providers.WebsocketProvider('ws://127.0.0.1:8545') 
+
         web3 = new Web3(provider);
         console.log("No web3 instance injected, using Local web3.");
         resolve(web3);

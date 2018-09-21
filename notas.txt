@@ -69,3 +69,9 @@ ir a https://faucet.ropsten.be/ , y con la clave pedir plata
 en network ropsten no usar gas price
 compiler (current compiler is 0.4.24+commit.e67f0147.Emscripten.clang
 para verificarlo , optimization igual a no
+
+
+
+
+mi adress en etherscan ropsten : 0x3CB0A8Af4289384696Dd2E576d54149c4b2f599F
+mi clave privada : F7D0417D509D00CC54E77C7023C16B1F750F8FE6C9B5581436FA4191BE50C9BB
