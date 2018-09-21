@@ -324,7 +324,7 @@ class App extends Component {
     console.log(contract);
 
 
-    
+
 
 
 
@@ -350,7 +350,7 @@ class App extends Component {
             "Cristian@gmail.com",
             20,
             120).encodeABI(),
-       "nonce": web3.utils.toHex(count)
+        "nonce": web3.utils.toHex(count)
       }
       console.log(rawTransaction);
       //creating tranaction via ethereumjs-tx
@@ -359,7 +359,14 @@ class App extends Component {
       transaction.sign(privateKey);
       //sending transacton via web3js module
       web3.eth.sendSignedTransaction('0x' + transaction.serialize().toString('hex'))
-        .on('transactionHash', console.log);
+        .on('transactionHash', console.log)
+        .on('receipt', function (receipt) {
+          // receipt example
+          console.log("on receipt");
+          console.log(receipt);
+
+        })
+
 
     })
 
